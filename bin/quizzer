@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'quizzer'
+
+quizzer = Quizzer::Quizzer.new
+quizzer.say_hello
