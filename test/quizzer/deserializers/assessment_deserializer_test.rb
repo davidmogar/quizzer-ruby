@@ -2,7 +2,7 @@ require 'test/unit'
 
 require_relative '../../../lib/quizzer/deserializers/assessment_deserializer'
 
-class AssesmentDeserializerTest < Test::Unit::TestCase
+class AssessmentDeserializerTest < Test::Unit::TestCase
 
   @@questionsJson = '{ "questions": [ { "type": "multichoice", "id" : 1, "questionText": "Scala fue creado por...",
         "alternatives": [ { "text": "Martin Odersky", "code": 1, "value": 1 }, { "text": "James Gosling", "code": 2,
@@ -26,5 +26,9 @@ class AssesmentDeserializerTest < Test::Unit::TestCase
     assert(answers[234].length == 2, 'Unexpected size for answers of student id 234')
     assert(answers[245].length == 2, 'Unexpected size for answers of student id 245')
     assert(answers[221].length == 1, 'Unexpected size for answers of student id 221')
+  end
+
+  def test_deserialize_grades
+
   end
 end

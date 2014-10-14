@@ -6,15 +6,15 @@ require 'quizzer/version'
 Gem::Specification.new do |spec|
   spec.name          = "quizzer"
   spec.version       = Quizzer::VERSION
-  spec.authors       = ["David Moreno Garc\xC3\xADa"]
+  spec.authors       = ["David Moreno García"]
   spec.email         = ["david.mogar@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Assessment parser}
+  spec.description   = %q{Simple application to parse and validate custom assessments JSON files}
+  spec.homepage      = "https://github.com/davidmogar/quizzer-ruby"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.executables   = ['quizzer']
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 

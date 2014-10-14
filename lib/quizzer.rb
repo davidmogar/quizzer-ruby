@@ -1,5 +1,9 @@
-require "quizzer/version"
+require 'quizzer/version'
 
 module Quizzer
-  # Your code goes here...
+  class Quizzer
+    def say_hello
+      puts 'This is zerp. Coming in loud and clear. Over.'
+    end
+  end
 end
