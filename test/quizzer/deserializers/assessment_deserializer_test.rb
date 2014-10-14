@@ -18,10 +18,9 @@ class AssessmentDeserializerTest < Test::Unit::TestCase
         { "studentId": 221, "value": 0.75 } ] }'
 
   def test_deserialize_answers
-    answers = AssessmentDeserializer::deserialize_answers(@@answersJson);
+    answers = AssessmentDeserializer::deserialize_answers(@@answersJson)
 
     assert_not_nil(answers, 'Answers is nil')
-
     assert(answers.length == 3, 'Unexpected size for answers map')
     assert(answers[234].length == 2, 'Unexpected size for answers of student id 234')
     assert(answers[245].length == 2, 'Unexpected size for answers of student id 245')
@@ -29,6 +28,26 @@ class AssessmentDeserializerTest < Test::Unit::TestCase
   end
 
   def test_deserialize_grades
+    grades = AssessmentDeserializer::deserialize_grades(@@gradesJson)
 
+    assert_not_nil(grades, 'Grades is nil')
+    assert(grades.length == 3, 'Unexpected size for grades map')
+    assert_in_delta(grades[234].grade, 0.75, 0.05, 'Grade va;ie fpr od 234 doesn\'t match')
+    assert_in_delta(grades[245].grade, 2, 0.05, 'Grade va;ie fpr od 245 doesn\'t match')
+    assert_in_delta(grades[221].grade, 0.75, 0.05, 'Grade va;ie fpr od 221 doesn\'t match')
   end
+
+  def test_deserialize_questions
+    questions = AssessmentDeserializer::deserialize_questions(@@questionsJson)
+
+    assert_not_nil(questions, 'Questions is nil')
+    assert(questions.length == 2, 'Unexpected size for questions map')
+    assert(questions[1].instance_of?(MultichoiceQuestion), 'Unexpected type for question 1')
+    assert(questions[2].instance_of?(TrueFalseQuestion), 'Unexpected type for question 2')
+    assert(questions[2].correct, 'Unexpected value for question 2')
+
+    answers = AssessmentDeserializer::deserialize_answers(@@answersJson)
+    assert_in_delta(questions[1].get_score(answers[234][0]), 1, 0.05, 'Unexpected score for answer 1 of student 234')
+  end
+
 end

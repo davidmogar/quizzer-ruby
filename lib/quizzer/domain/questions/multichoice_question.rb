@@ -2,7 +2,7 @@ require_relative 'question'
 
 class MultichoiceQuestion < Question
 
-  attr_accessor :correct, :alternatives
+  attr_accessor :alternatives
 
   def initialize(id, text)
     super(id, text)
@@ -16,7 +16,7 @@ class MultichoiceQuestion < Question
   def get_score(answer)
     raise ArgumentError.new('Answer cannot be nil') if (answer == nil)
 
-    return alternatives.has_key?(answer.value)? alternatives[answer.value] : 0
+    return alternatives.has_key?(answer.value)? alternatives[answer.value].value : 0
   end
 
   class Alternative

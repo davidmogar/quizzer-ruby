@@ -1,6 +1,7 @@
 require 'json'
 
 require_relative '../domain/answer'
+require_relative '../domain/grade'
 require_relative '../domain/questions/multichoice_question'
 require_relative '../domain/questions/numerical_question'
 require_relative '../domain/questions/true_false_question'
@@ -55,7 +56,9 @@ class AssessmentDeserializer
       if data.has_key?('questions')
         data['questions'].map do |question|
           begin
-            questions[question['id']] = method(@@question_type[question['type']]).call(question) if data.has_key?('questionText')
+            if question.has_key?('id') && question.has_key?('questionText')
+              questions[question['id']] = method(@@question_type[question['type']]).call(question)
+            end
           end
         end
       end
@@ -79,7 +82,7 @@ class AssessmentDeserializer
   end
 
   def self.deserialize_numerical(hash)
-    question = TrueFalseQuestion.new(hash['id'], hash['questionText'])
+    question = NumericalQuestion.new(hash['id'], hash['questionText'])
 
     question.correct = hash['correct'] if hash.has_key?('correct')
     question.value_correct = hash['valueOK'] if hash.has_key?('valueOK')

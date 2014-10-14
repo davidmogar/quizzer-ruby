@@ -1,6 +1,6 @@
 require_relative 'question'
 
-class TrueFalseQuestion
+class TrueFalseQuestion < Question
 
   attr_accessor :correct, :value_correct, :value_incorrect, :feedback
 
