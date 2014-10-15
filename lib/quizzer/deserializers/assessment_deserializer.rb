@@ -24,7 +24,7 @@ class AssessmentDeserializer
           begin
             answers[item['studentId']] = item['answers'].map { |answer| Answer.new(answer['question'], answer['value']) }
           end
-        end if data.has_key?('items')
+        end
       end
     end
 

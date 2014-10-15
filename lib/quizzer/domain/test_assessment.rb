@@ -1,4 +1,4 @@
-class Test
+class TestAssessment
 
   attr_accessor :questions_url, :answers_url, :grades_url
 

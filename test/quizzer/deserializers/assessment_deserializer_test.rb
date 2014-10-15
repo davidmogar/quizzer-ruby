@@ -4,21 +4,21 @@ require_relative '../../../lib/quizzer/deserializers/assessment_deserializer'
 
 class AssessmentDeserializerTest < Test::Unit::TestCase
 
-  @@questionsJson = '{ "questions": [ { "type": "multichoice", "id" : 1, "questionText": "Scala fue creado por...",
+  @@questions_json = '{ "questions": [ { "type": "multichoice", "id" : 1, "questionText": "Scala fue creado por...",
         "alternatives": [ { "text": "Martin Odersky", "code": 1, "value": 1 }, { "text": "James Gosling", "code": 2,
         "value": -0.25 }, { "text": "Guido van Rossum", "code": 3, "value": -0.25 } ] }, { "type" : "truefalse",
         "id" : 2, "questionText": "El creador de Ruby es Yukihiro Matsumoto", "correct": true, "valueOK": 1,
         "valueFailed": -0.25, "feedback": "Yukihiro Matsumoto es el principal desarrollador de Ruby desde 1996" } ] }'
 
-  @@answersJson = '{ "items": [ { "studentId": 234 , "answers": [ { "question" : 1, "value": 1 }, { "question" : 2,
+  @@answers_json = '{ "items": [ { "studentId": 234 , "answers": [ { "question" : 1, "value": 1 }, { "question" : 2,
         "value": false } ] }, { "studentId": 245 , "answers": [ { "question" : 1, "value": 1 }, { "question" : 2,
         "value": true } ] }, { "studentId": 221 , "answers": [ { "question" : 1, "value": 2 } ] } ] }'
 
-  @@gradesJson = '{ "scores": [ { "studentId": 234, "value": 0.75 } , { "studentId": 245, "value": 2.0 } ,
+  @@grades_json = '{ "scores": [ { "studentId": 234, "value": 0.75 } , { "studentId": 245, "value": 2.0 } ,
         { "studentId": 221, "value": 0.75 } ] }'
 
   def test_deserialize_answers
-    answers = AssessmentDeserializer::deserialize_answers(@@answersJson)
+    answers = AssessmentDeserializer::deserialize_answers(@@answers_json)
 
     assert_not_nil(answers, 'Answers is nil')
     assert(answers.length == 3, 'Unexpected size for answers map')
@@ -28,7 +28,7 @@ class AssessmentDeserializerTest < Test::Unit::TestCase
   end
 
   def test_deserialize_grades
-    grades = AssessmentDeserializer::deserialize_grades(@@gradesJson)
+    grades = AssessmentDeserializer::deserialize_grades(@@grades_json)
 
     assert_not_nil(grades, 'Grades is nil')
     assert(grades.length == 3, 'Unexpected size for grades map')
@@ -38,7 +38,7 @@ class AssessmentDeserializerTest < Test::Unit::TestCase
   end
 
   def test_deserialize_questions
-    questions = AssessmentDeserializer::deserialize_questions(@@questionsJson)
+    questions = AssessmentDeserializer::deserialize_questions(@@questions_json)
 
     assert_not_nil(questions, 'Questions is nil')
     assert(questions.length == 2, 'Unexpected size for questions map')
@@ -46,7 +46,7 @@ class AssessmentDeserializerTest < Test::Unit::TestCase
     assert(questions[2].instance_of?(TrueFalseQuestion), 'Unexpected type for question 2')
     assert(questions[2].correct, 'Unexpected value for question 2')
 
-    answers = AssessmentDeserializer::deserialize_answers(@@answersJson)
+    answers = AssessmentDeserializer::deserialize_answers(@@answers_json)
     assert_in_delta(questions[1].get_score(answers[234][0]), 1, 0.05, 'Unexpected score for answer 1 of student 234')
   end
 

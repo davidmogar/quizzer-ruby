@@ -14,7 +14,7 @@ class MultichoiceQuestion < Question
   end
 
   def get_score(answer)
-    raise ArgumentError.new('Answer cannot be nil') if (answer == nil)
+    raise ArgumentError.new('Answer cannot be nil') if answer.nil?
 
     return alternatives.has_key?(answer.value)? alternatives[answer.value].value : 0
   end
