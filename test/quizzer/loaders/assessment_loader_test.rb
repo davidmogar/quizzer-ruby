@@ -5,8 +5,8 @@ require_relative '../../../lib/quizzer/loaders/assessment_loader'
 class AssessmentDeserializerTest < Test::Unit::TestCase
 
   @@questions_url = 'test/resources/questions.json';
-  @@answers_url = 'resources/answers.json';
-  @@grades__url = 'resources/grades.json';
+  @@answers_url = 'test/resources/answers.json';
+  @@grades__url = 'test/resources/grades.json';
 
   def test_load_assessment_from___urls
     assert(File.exist?(@@questions_url), 'Missing questions file')

@@ -1,8 +1,8 @@
 { "tests":
     [ { "type": "score",
-        "quizz" : "resources/questions.json",
-        "assessment": "resources/answers.json",
-        "scores": "resources/grades.json"
+        "quizz" : "test/resources/questions.json",
+        "assessment": "test/resources/answers.json",
+        "scores": "test/resources/grades.json"
     }
     ]
 }
