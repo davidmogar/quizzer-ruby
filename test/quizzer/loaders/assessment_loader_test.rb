@@ -4,7 +4,7 @@ require_relative '../../../lib/quizzer/loaders/assessment_loader'
 
 class AssessmentDeserializerTest < Test::Unit::TestCase
 
-  @@questions_url = 'resources/questions.json';
+  @@questions_url = 'test/resources/questions.json';
   @@answers_url = 'resources/answers.json';
   @@grades__url = 'resources/grades.json';
 
