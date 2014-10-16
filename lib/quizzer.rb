@@ -1,5 +1,6 @@
 require 'quizzer/version'
 
+require_relative 'server'
 require_relative '../lib/quizzer/loaders/assessment_loader'
 require_relative '../lib/quizzer/loaders/tests_loader'
 require_relative '../lib/quizzer/serializers/assessment_serializer'
@@ -16,6 +17,10 @@ module Quizzer
       end
 
       return assessment
+    end
+
+    def server_mode
+      Server.run!
     end
 
     def show_grades(grades, format)

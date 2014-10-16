@@ -19,8 +19,7 @@ begin
   opts.parse
 
   if ARGV.length == 0
-    # start server
-    puts 'server'
+    quizzer.server_mode
   elsif opts[:t]
     valid = quizzer.validate_assessments(opts[:t])
     puts valid ? 'All tests OK' : 'Tests failed'
