@@ -1,6 +1,7 @@
 require 'open-uri'
 
 require_relative '../assessment'
+require_relative '../../../lib/quizzer/deserializers/assessment_deserializer'
 
 class AssessmentLoader
 
