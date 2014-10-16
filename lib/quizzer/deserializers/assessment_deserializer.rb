@@ -8,12 +8,14 @@ require_relative '../domain/questions/true_false_question'
 
 class AssessmentDeserializer
 
+  # Hash used to know what method to use to deserialize a question
   @@question_type = {
       'multichoice' => :deserialize_multichoice,
       'numerical' => :deserialize_numerical,
       'truefalse' => :deserialize_true_false
   }
 
+  # Deserializes the JSON representation received as arguments to a map of student ids to Answer objects
   def self.deserialize_answers(json)
     answers = Hash.new
 
@@ -31,6 +33,7 @@ class AssessmentDeserializer
     return answers
   end
 
+  # Deserializes the JSON representation received as arguments to a map of student ids to Grade objects
   def self.deserialize_grades(json)
     grades = Hash.new
 
@@ -48,6 +51,7 @@ class AssessmentDeserializer
     return grades
   end
 
+  # Deserializes the JSON representation received as arguments to a map of question ids to Question objects
   def self.deserialize_questions(json)
     questions = Hash.new
 

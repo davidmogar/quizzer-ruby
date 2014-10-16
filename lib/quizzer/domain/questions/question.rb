@@ -5,6 +5,7 @@ class Question
     @text = text
   end
 
+  # Calculates the score obtained by an student given its answer
   def get_score(answer)
     raise 'SubclassResponsibility'
   end

@@ -7,10 +7,12 @@ require_relative '../lib/quizzer/serializers/assessment_serializer'
 
 class Server < Sinatra::Base
 
+  # Get route to the form
   get '/' do
     erb :index
   end
 
+  # Post route used by the form
   post '/' do
     questions_json = params[:questions]
     answers_json = params[:answers]

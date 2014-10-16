@@ -3,6 +3,7 @@ require_relative 'assessment_xml_serializer'
 
 class AssessmentSerializer
 
+  # Returns an string with the representation of the grades in the desired format
   def self::serialize_grades(grades, format)
     case format
       when 'xml'
@@ -14,6 +15,7 @@ class AssessmentSerializer
     return result
   end
 
+  # Returns an string with the representation of the statistics in the desired format
   def self::serialize_statistics(statistics, format)
     case format
       when 'xml'

@@ -2,6 +2,7 @@ require 'json'
 
 class AssessmentJsonSerializer
 
+  # Returns an string with the representation of the grades in JSON format
   def self::serialize_grades(grades)
     scores = Array.new
 
@@ -10,6 +11,7 @@ class AssessmentJsonSerializer
     return JSON.pretty_generate({ "scores" => scores })
   end
 
+  # Returns an string with the representation of the statistics in JSON format
   def self::serialize_statistics(statistics)
     items = Array.new
 

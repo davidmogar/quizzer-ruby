@@ -9,6 +9,7 @@ class Assessment
     @grades = Hash.new
   end
 
+  # Calculate the grades of this assessment
   def calculate_grades
     @grades = Hash.new
 
@@ -17,6 +18,7 @@ class Assessment
     end
   end
 
+  # Calculates the grade of a given student
   def calculate_student_grade(student_id)
     grade = 0
 
@@ -30,6 +32,7 @@ class Assessment
     return grade
   end
 
+  # Returns an array mapping each question id with the number of correct answers of that question
   def get_statistics
     statistics = Hash.new
 
@@ -50,6 +53,8 @@ class Assessment
     return statistics
   end
 
+  # Validates the grade received as argument, checking that the value stored correspond to the grade
+  # obtained by the student
   def validate_grade(grade)
     valid = false
 
@@ -60,6 +65,8 @@ class Assessment
     return valid
   end
 
+  # Validate all the grades of this assessment, checking that all the values stored in each grade correspond to
+  # the actual grade obtained by the students
   def validate_grades
     valid = true
 

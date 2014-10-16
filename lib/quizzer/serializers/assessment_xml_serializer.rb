@@ -1,5 +1,6 @@
 class AssessmentXmlSerializer
 
+  # Returns an string with the representation of the grades in XML format
   def self::serialize_grades(grades)
     result = "<scores>\n"
 
@@ -11,6 +12,7 @@ class AssessmentXmlSerializer
     return result + '</scores>'
   end
 
+  # Returns an string with the representation of the statistics in XML format
   def self::serialize_statistics(statistics)
     result = "<statistics>\n"
 

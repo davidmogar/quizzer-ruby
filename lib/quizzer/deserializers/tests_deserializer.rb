@@ -4,6 +4,7 @@ require_relative '../domain/test_assessment'
 
 class TestsDeserializer
 
+  # Deserializes the JSON representation received as arguments to a list of Test objects
   def self.deserialize(json)
     tests = Array.new
 

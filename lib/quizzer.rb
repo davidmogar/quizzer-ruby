@@ -8,6 +8,7 @@ require_relative '../lib/quizzer/serializers/assessment_serializer'
 module Quizzer
   class Quizzer
 
+    # Calculate assessments' grades given the urls to the questions and answers files
     def calculate_grades(questions_url, answers_url)
       assessment = nil
 
@@ -19,22 +20,26 @@ module Quizzer
       return assessment
     end
 
+    # Starts sinatra server
     def server_mode
       Server.run!
     end
 
+    # Show the grades received as argument in the format specified
     def show_grades(grades, format)
       puts 'Assessment\'s grades'
       puts AssessmentSerializer::serialize_grades(grades, format)
       puts
     end
 
+    # Show the statistics received as argument in the format specified
     def show_statistics(statistics, format)
       puts 'Assessment\'s statistics'
       puts AssessmentSerializer::serialize_statistics(statistics, format)
       puts
     end
 
+    # Validate tests inside of the file referenced by the URL argument
     def validate_assessments(url)
       valid = true;
 
