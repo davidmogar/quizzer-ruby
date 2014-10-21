@@ -32,9 +32,9 @@ class AssessmentDeserializerTest < Test::Unit::TestCase
 
     assert_not_nil(grades, 'Grades is nil')
     assert(grades.length == 3, 'Unexpected size for grades map')
-    assert_in_delta(grades[234].grade, 0.75, 0.05, 'Grade va;ie fpr od 234 doesn\'t match')
-    assert_in_delta(grades[245].grade, 2, 0.05, 'Grade va;ie fpr od 245 doesn\'t match')
-    assert_in_delta(grades[221].grade, 0.75, 0.05, 'Grade va;ie fpr od 221 doesn\'t match')
+    assert_in_delta(grades[234].grade, 0.75, 0.05, 'Grade value for id 234 doesn\'t match')
+    assert_in_delta(grades[245].grade, 2, 0.05, 'Grade alue for id 245 doesn\'t match')
+    assert_in_delta(grades[221].grade, 0.75, 0.05, 'Grade alue for id 221 doesn\'t match')
   end
 
   def test_deserialize_questions
