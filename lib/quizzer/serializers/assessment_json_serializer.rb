@@ -17,7 +17,7 @@ class AssessmentJsonSerializer
 
     statistics.each { |question_id, correct_answers| items << { "questionId" => question_id, "correctAnswers" => correct_answers } }
 
-    return JSON.pretty_generate({ "items" => items })
+    return JSON.pretty_generate({ "statistics" => items })
   end
 
 end
